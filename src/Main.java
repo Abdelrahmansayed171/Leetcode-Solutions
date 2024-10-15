@@ -1,3 +1,5 @@
+import Easy.Solution_724;
+
 public class Main {
     public static void main(String[] args) {
         Solution_724 solution724 = new Solution_724();
