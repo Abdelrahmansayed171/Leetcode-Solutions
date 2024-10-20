@@ -30,6 +30,15 @@ public class Solution_2095 {
         return head;
     }*/
     public ListNode deleteMiddle(ListNode head) {
-
+        if (head.next == null||head==null)
+            return null;
+        ListNode slow = head;
+        ListNode fast = head.next.next;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        slow.next = slow.next.next;
+        return head;
     }
 }
