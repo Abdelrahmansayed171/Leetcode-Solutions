@@ -1,15 +1,13 @@
 package Medium;
 
-import java.util.List;
-
 public class Solution_328 {
-/*    public ListNode oddEvenList(ListNode head) {
+/*    public Medium.ListNode oddEvenList(Medium.ListNode head) {
         if(head == null || head.next == null){
             return head;
         }
-        ListNode odd = head;
-        ListNode tmp = head.next;
-        ListNode last = null;
+        Medium.ListNode odd = head;
+        Medium.ListNode tmp = head.next;
+        Medium.ListNode last = null;
         while (odd != null ){
 
             if(odd.next.next != null){

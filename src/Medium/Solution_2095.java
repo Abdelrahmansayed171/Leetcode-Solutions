@@ -4,11 +4,11 @@ package Medium;
 // Delete the Middle Node of a Linked List.
 
 public class Solution_2095 {
-    /*public ListNode deleteMiddle(ListNode head) {
+    /*public Medium.ListNode deleteMiddle(Medium.ListNode head) {
         if(head == null || head.next == null)
             return null;
         int size = 0;
-        ListNode tmp = head;
+        Medium.ListNode tmp = head;
         while ( tmp != null ) {
             size++;
             tmp = tmp.next;

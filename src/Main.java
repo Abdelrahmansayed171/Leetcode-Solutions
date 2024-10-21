@@ -1,4 +1,3 @@
-import Easy.Solution_724;
 import Medium.*;
 
 

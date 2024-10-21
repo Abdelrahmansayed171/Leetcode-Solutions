@@ -1,11 +1,7 @@
 package Medium;
 
-import java.util.Deque;
-import java.util.LinkedList;
-import java.util.Vector;
-
 public class Solution_2130 {
-/*    public int pairSum(ListNode head) {
+/*    public int pairSum(Medium.ListNode head) {
         int sum = -10;
         Deque<Integer> deque = new LinkedList<>();
         while (head != null){
