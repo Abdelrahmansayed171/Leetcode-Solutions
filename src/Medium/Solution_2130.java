@@ -5,7 +5,7 @@ import java.util.LinkedList;
 import java.util.Vector;
 
 public class Solution_2130 {
-    public int pairSum(ListNode head) {
+/*    public int pairSum(ListNode head) {
         int sum = -10;
         Deque<Integer> deque = new LinkedList<>();
         while (head != null){
@@ -19,6 +19,26 @@ public class Solution_2130 {
                 sum = deque.peekFirst() + deque.peekLast();
             deque.pollFirst();
             deque.pollLast();
+        }
+        return sum;
+    }*/
+
+    public int pairSum(ListNode head){
+        ListNode prev = null;
+        ListNode slow = head;
+        ListNode fast = head;
+        while(fast != null){
+            fast = fast.next.next;
+            ListNode next = slow.next;
+            slow.next = prev;
+            prev = slow;
+            slow = next;
+        }
+        int sum = -10;
+        while (prev!= null){
+            sum = Math.max(sum, prev.val + slow.val);
+            prev = prev.next;
+            slow = slow.next;
         }
         return sum;
     }
