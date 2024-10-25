@@ -7,7 +7,7 @@ public class Main {
     public static void main(String[] args) {
 
         Solution_236 solution2352 = new Solution_236();
-        solution2352.lowestCommonAncestor();
+//        solution2352.lowestCommonAncestor();
 //        TreeNode root1 = new TreeNode(
 //                1,
 //                new TreeNode(2),
