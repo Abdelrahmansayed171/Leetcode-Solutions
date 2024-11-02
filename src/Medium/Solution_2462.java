@@ -16,21 +16,26 @@ public class Solution_2462 {
             right--;
         }
         long sum = 0;
-        boolean lturn = true;
         while(k-- > 0){
-            if(lturn && leftGroup.isEmpty() || !lturn && rightGroup.isEmpty())
-                lturn = !lturn;
-            if(lturn) {
+            if(rightGroup.isEmpty()){
                 sum += leftGroup.poll();
-                if(left <= right)
-                    leftGroup.offer(costs[left++]);
             }
-            else {
+            else if (leftGroup.isEmpty()){
                 sum+= rightGroup.poll();
-                if(right >= left)
-                    rightGroup.offer(costs[right--]);
             }
-            lturn = !lturn;
+            else{
+                int lp = leftGroup.peek(), rp = rightGroup.peek();
+                if(lp <= rp) {
+                    sum += leftGroup.poll();
+                    if(left <= right)
+                        leftGroup.offer(costs[left++]);
+                }
+                else{
+                    sum+= rightGroup.poll();
+                    if(right >= left)
+                        rightGroup.offer(costs[right--]);
+                }
+            }
         }
         return sum;
     }
