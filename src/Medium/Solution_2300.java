@@ -8,17 +8,14 @@ public class Solution_2300 {
         int n = spells.length;
         int[] res = new int [n];
         for(int i = 0; i < n;i++){
-            int left = 0, right = spells.length-1;
+            int left = 0, right = potions.length-1;
             while(left <= right){
                 int mid = left + (right-left)/2;
                 if ((long) spells[i] * potions[mid] < success){
-                    if((long) spells[i] * potions[mid+1] >= success){
-                        res[i] = potions.length - mid+1;
-                        break;
-                    }
                     left = mid+1;
                 }
                 else{
+                    res[i] = Math.max(res[i], potions.length - mid);
                     right = mid-1;
                 }
             }
