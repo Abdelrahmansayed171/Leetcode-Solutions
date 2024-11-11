@@ -4,8 +4,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class TrieNode {
+    public Map<Character, TrieNode> children;
+    public boolean fullWord;
     TrieNode(){
-        Map<Character, TrieNode> children = new HashMap<>();
-        boolean fullWord = false;
+        children = new HashMap<>();
+        fullWord = false;
     }
 }
