@@ -2,6 +2,7 @@ package Top_Interview_150;
 
 import Medium.TreeNode;
 
+// Easy 104. Maximum Depth of Binary Tree
 class Solution {
     public int maxDepth(TreeNode root) {
         return helper(root, 0);
@@ -15,6 +16,7 @@ class Solution {
 
     /*
     * Submission 2:
+    *  - BackTracking solution that reaches leaf node first, then calculate max depth on return ( Better recursion Approach)
     *   public int maxDepth(TreeNode root) {
             if(root == null)
                 return 0;
