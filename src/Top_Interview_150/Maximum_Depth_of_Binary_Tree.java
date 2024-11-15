@@ -3,7 +3,7 @@ package Top_Interview_150;
 import Medium.TreeNode;
 
 // Easy 104. Maximum Depth of Binary Tree
-class Solution {
+class Maximum_Depth_of_Binary_Tree {
     public int maxDepth(TreeNode root) {
         return helper(root, 0);
     }
