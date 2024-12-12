@@ -3,35 +3,27 @@ package Top_Interview_150;
 // 133. Clone Graph
 // Medium
 
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Stack;
+import java.util.*;
 
 public class Clone_Graph {
     public GraphNode cloneGraph(GraphNode node) {
         if(node == null)
             return null;
-        Set<Integer> visited = new HashSet<>();
-        GraphNode root = new GraphNode();
+        Map<GraphNode, GraphNode> mappings = new HashMap<>();
         Stack<GraphNode> dfs = new Stack<>();
-        Stack<GraphNode> origins = new Stack<>();
-        dfs.push(root);
-        origins.push(node);
-        while(!dfs.isEmpty() && !origins.isEmpty()){
-            GraphNode origin = origins.pop();
-            visited.add(origin.val);
+        dfs.push(node);
+        mappings.put(node, new GraphNode(node.val));
+
+        while(!dfs.isEmpty()){
             GraphNode curr = dfs.pop();
-            curr.val = origin.val;
-            for(GraphNode neighbor : origin.neighbors){
-                if(!visited.contains(neighbor.val)) {
-                    GraphNode newNode = new GraphNode();
-                    newNode.neighbors.add(curr);
-                    curr.neighbors.add(newNode);
-                    dfs.push(newNode);
-                    origins.push(neighbor);
+            for(GraphNode neighbor : curr.neighbors){
+                if(!mappings.containsKey(neighbor)) {
+                    mappings.put(neighbor, new GraphNode(neighbor.val));
+                    dfs.push(neighbor);
                 }
+                mappings.get(curr).neighbors.add(mappings.get(neighbor));
             }
         }
-        return root;
+        return mappings.get(node);
     }
 }
