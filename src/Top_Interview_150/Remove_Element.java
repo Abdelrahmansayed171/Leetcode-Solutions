@@ -6,6 +6,14 @@ import java.util.*;
 
 public class Remove_Element {
     public int removeElement(int[] nums, int val) {
-        return 0;
+        int k = 0;
+        for(int i =0; i < nums.length;i++){
+            if(nums[i] == val){
+                k++;
+                nums[i] = 101;
+            }
+        }
+        Arrays.sort(nums);
+        return nums.length-k;
     }
 }
