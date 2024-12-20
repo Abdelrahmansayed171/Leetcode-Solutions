@@ -5,25 +5,31 @@ import java.util.*;
 //Medium
 
 public class Interleaving_String {
+
+    // DFS with Memoization Solution
     public boolean isInterleave(String s1, String s2, String s3) {
-        if(s1.length() + s2.length() != s3.length())
+        if(s1.length()+s2.length() != s3.length())
             return false;
-        List<Character> l = new ArrayList<>(),r = new ArrayList<>();
-        for(Character c : s1.toCharArray()){
-            l.add(c);
-        }
-        for(Character c : s2.toCharArray()){
-            l.add(c);
-        }
-        for(Character c : s3.toCharArray()){
-            r.add(c);
-        }
-        l.sort(Comparator.naturalOrder());
-        r.sort(Comparator.naturalOrder());
-        for(int i = 0; i < l.size();i++){
-            if(!l.get(i).equals(r.get(i)))
-                return false;
-        }
-        return true;
+
+        Map<String, Boolean> memo = new HashMap<>();
+        return dfs(memo, 0, 0, s1, s2, s3);
+    }
+
+    private boolean dfs(Map<String, Boolean> memo, int i, int j, String s1, String s2, String s3) {
+        if(i+j == s3.length())
+            return true;
+
+        String key = i + " " + j;
+
+        if(memo.containsKey(key))
+            return memo.get(key);
+
+        if( i < s1.length() && s1.charAt(i) == s3.charAt(i+j) && dfs(memo,i+1, j, s1,s2,s3))
+            return true;
+
+        if(j < s2.length() && s2.charAt(j) == s3.charAt(i+j) && dfs(memo,i, j+1, s1,s2,s3))
+            return true;
+        memo.put(key, false);
+        return false;
     }
 }
