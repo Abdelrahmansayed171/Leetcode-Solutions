@@ -6,6 +6,16 @@ import java.util.*;
 
 public class Length_Of_Last_Word {
     public int lengthOfLastWord(String s) {
-        return 0;
+        int cnt = 0;
+        boolean stop = false;
+        for(int i = s.length()-1;i >= 0; i--){
+            if(stop && s.charAt(i) == ' ')
+                return cnt;
+            if(s.charAt(i) != ' ') {
+                cnt++;
+                stop = true;
+            }
+        }
+        return cnt;
     }
 }
